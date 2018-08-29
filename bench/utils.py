@@ -133,6 +133,7 @@ def setup_env(bench_path='.'):
 	exec_cmd('virtualenv -q {} -p {}'.format('env', sys.executable), cwd=bench_path)
 	#exec_cmd('./env/bin/pip -q install --upgrade pip', cwd=bench_path)
 	exec_cmd('./env/bin/pip -q install pip==9.0.1', cwd=bench_path)
+	exec_cmd('./env/bin/pip -q install python-magic==0.4.15', cwd=bench_path)
 	exec_cmd('./env/bin/pip -q install wheel', cwd=bench_path)
 	# exec_cmd('./env/bin/pip -q install https://github.com/frappe/MySQLdb1/archive/MySQLdb-1.2.5-patched.tar.gz', cwd=bench_path)
 	exec_cmd('./env/bin/pip -q install six', cwd=bench_path)
