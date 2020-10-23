@@ -5,8 +5,8 @@
   user: "{{ frappe_user }}"
   tasks:
       - git:
-          repo=https://github.com/frappe/bench
-          dest=/home/frappe/bench-repo
+          repo=https://github.com/drukhil/bench
+          dest=/home/frappe/erp
           depth=no
   tags:
     - bench_install
@@ -18,7 +18,7 @@
   tasks:
 
       - easy_install: name=pip executable=easy_install-2.7
-      - pip:          name=/home/frappe/bench-repo extra_args='-e'
+      - pip:          name=/home/frappe/erp extra_args='-e'
   tags:
     - bench_install
 
@@ -31,11 +31,11 @@
   gather_facts: false
   tasks:
     - bench:
-        path: /home/frappe/frappe-bench
+        path: /home/frappe/erp
         frappe_branch: develop
         apps:
           - name: erpnext
-            url: https://github.com/frappe/erpnext
+            url: https://github.com/drukhil/erpnext
           - name: erpnext_demo
             url: https://github.com/frappe/erpnext_demo
         mariadb_root_password: "{{ mysql_root_password }}"
@@ -55,10 +55,10 @@
   tasks:
     - shell: "bench setup sudoers {{ frappe_user }}"
       args:
-        chdir: "/home/{{ frappe_user }}/frappe-bench"
-        creates: "/home/{{ frappe_user }}/frappe-bench/config/supervisor.conf"
+        chdir: "/home/{{ frappe_user }}/erp"
+        creates: "/home/{{ frappe_user }}/erp/config/supervisor.conf"
     - shell: "bench setup production {{ frappe_user }}"
       args:
-        chdir: "/home/{{ frappe_user }}/frappe-bench"
-        creates: "/home/{{ frappe_user }}/frappe-bench/config/supervisor.conf"
-    - file: path="/home/{{ frappe_user }}/frappe-bench/logs/" recurse=yes owner="{{ frappe_user }}"
+        chdir: "/home/{{ frappe_user }}/erp"
+        creates: "/home/{{ frappe_user }}/erp/config/supervisor.conf"
+    - file: path="/home/{{ frappe_user }}/erp/logs/" recurse=yes owner="{{ frappe_user }}"
