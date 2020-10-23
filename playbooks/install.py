@@ -36,7 +36,7 @@ def install_bench(args):
 	# secure pip installation
 	if find_executable('pip'):
 		run_os_command({
-			'yum': 'sudo pip install --upgrade setuptools pip',
+			#'yum': 'sudo pip install --upgrade setuptools pip',
 			'apt-get': 'sudo pip install --upgrade setuptools pip',
 			'brew': "sudo pip install --upgrade setuptools pip --user"
 		})
