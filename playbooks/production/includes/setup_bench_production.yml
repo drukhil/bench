@@ -1,7 +1,8 @@
 ---
   - hosts: localhost
     vars:
-      bench_path: "/home/{{ ansible_user_id }}/frappe-bench"
+      #bench_path: "/home/{{ ansible_user_id }}/frappe-bench"
+      bench_path: "/home/{{ ansible_user_id }}/erp"
 
     tasks:
 
@@ -22,7 +23,8 @@
 
     # In case we are re-running the script, we would like to skip getting ERPNext App
     - name: Get-app erpnext app
-      command: bench get-app erpnext https://github.com/frappe/erpnext.git --branch {{ branch }}
+      #command: bench get-app erpnext https://github.com/frappe/erpnext.git --branch {{ branch }}
+      command: bench get-app erpnext https://github.com/drukhil/erpnext.git --branch nrdcl
       args:
         chdir: '{{ bench_path }}'
       when: not app.stat.exists
