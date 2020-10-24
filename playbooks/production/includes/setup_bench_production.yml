@@ -2,7 +2,7 @@
   - hosts: localhost
     vars:
       #bench_path: "/home/{{ ansible_user_id }}/frappe-bench"
-      bench_path: "/home/{{ ansible_user_id }}/erp"
+      bench_path: "/home/frappe/erp"
 
     tasks:
 
@@ -55,7 +55,8 @@
     - name: Setup Sudoers
       become: yes
       become_user: root
-      command: bench setup sudoers {{ ansible_user_id }}
+      #command: bench setup sudoers {{ ansible_user_id }}
+      command: bench setup sudoers frappe
       args:
         chdir: '{{ bench_path }}'
 
